@@ -15,7 +15,7 @@ public class Account {
     private String iban;
 
     @Column(name = "BALANCE")
-    private double balance;
+    private float balance;
 
     @Column(name = "OVERDRAFT")
     private double overdraft;
@@ -42,11 +42,11 @@ public class Account {
         this.iban = iban;
     }
 
-    public double getBalance() {
+    public float getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(float balance) {
         this.balance = balance;
     }
 

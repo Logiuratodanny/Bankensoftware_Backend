@@ -24,7 +24,7 @@ public class AccountController {
 
 
     @PostMapping("/account/deposit/{id}/{amount}")
-    public ResponseEntity<?> deposit(@PathVariable Long id, @PathVariable Long amount) {
+    public ResponseEntity<?> deposit(@PathVariable Long id, @PathVariable Float amount) {
         Optional<Account> accountOptional = accountRepository.findById(id);
         if (accountOptional.isPresent()) {
             Account account = accountOptional.get();
@@ -35,7 +35,7 @@ public class AccountController {
     }
 
     @PostMapping("/account/payout/{id}/{amount}")
-    public ResponseEntity<?> payout(@PathVariable Long id, @PathVariable Long amount) {
+    public ResponseEntity<?> payout(@PathVariable Long id, @PathVariable Float amount) {
         Optional<Account> accountOptional = accountRepository.findById(id);
         if (accountOptional.isPresent()) {
             Account account = accountOptional.get();
@@ -46,7 +46,7 @@ public class AccountController {
     }
 
     @PostMapping("/account/transfer/{id}/{amount}/{iban}")
-    public ResponseEntity<?> transfer(@PathVariable Long id, @PathVariable Long amount, @PathVariable String iban) {
+    public ResponseEntity<?> transfer(@PathVariable Long id, @PathVariable Float amount, @PathVariable String iban) {
         Optional<Account> accountOptionalFrom = accountRepository.findById(id);
         Optional<Account> accountOptionalTo = accountRepository.findByIban(iban);
 
