@@ -2,8 +2,6 @@ package com.example.bankensoftware_backend.Entity;
 
 import jakarta.persistence.*;
 
-import java.util.Optional;
-
 @Entity
 public class Account {
 
