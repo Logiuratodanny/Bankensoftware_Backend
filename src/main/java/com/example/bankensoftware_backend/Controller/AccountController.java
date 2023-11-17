@@ -26,7 +26,7 @@ public class AccountController {
     @PostMapping("/account/deposit/{id}/{amount}")
     public ResponseEntity<?> deposit(@PathVariable Long id, @PathVariable Float amount) {
         Optional<Account> accountOptional = accountRepository.findById(id);
-        if (accountOptional.isPresent()) {
+        if (accountOptional.isPresent() && amount > 0) {
             Account account = accountOptional.get();
             account.setBalance((account.getBalance() + amount));
             accountRepository.save(account);
@@ -37,7 +37,7 @@ public class AccountController {
     @PostMapping("/account/payout/{id}/{amount}")
     public ResponseEntity<?> payout(@PathVariable Long id, @PathVariable Float amount) {
         Optional<Account> accountOptional = accountRepository.findById(id);
-        if (accountOptional.isPresent()) {
+        if (accountOptional.isPresent() && amount > 0) {
             Account account = accountOptional.get();
             account.setBalance((account.getBalance() - amount));
             accountRepository.save(account);
